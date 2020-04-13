@@ -1,19 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import ModalForm from '../components/modalForm'
 import {connect} from 'react-redux'
 import {Formik} from 'formik'
 import {addCharacter, characterFormClose} from '../../redux/actions/characterForm'
 
 const ModalFormContainer = ({initialData, formVisible, addCharacter, formLoading, characterFormClose}) => {
-
-	// const [errMas, setErr] = useState(false);
     
 	return formVisible ? 
 	<Formik
 	initialValues={initialData ? {...initialData} : null}
 	onSubmit={values => {
 		addCharacter(values)
-		// setErr(true)
 	}}
 	onReset={() => characterFormClose()}
 	validate={values => {
@@ -40,7 +37,6 @@ const ModalFormContainer = ({initialData, formVisible, addCharacter, formLoading
 				formLoading={formLoading}
 				handleReset={handleReset}
 				isValidating={isValidating}
-				// errMas={errMas} 
 				/>
 			)
 		}

@@ -1,8 +1,8 @@
 import React from 'react'
-import AddCharacters from '../../containers/addCharacters/addCharacters'
+import AddCharacters from '../../containers/addCharacters'
 import {connect} from 'react-redux'
 import ModalForm from '../../forms/containers/modalForm'
-import CharacterList from '../../containers/characterList/characterList'
+import CharacterList from '../../containers/characterList'
 
 const App = ({formVisible}) => {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table, Button} from 'antd'
+import Confirm from '../UI/confirm/confirm'
 
 const CharactersTable = ({data, characterDelete, characterFormChange}) => {
     const columns = [
@@ -45,7 +46,7 @@ const CharactersTable = ({data, characterDelete, characterFormChange}) => {
             render: (text, record) => (
                 <span>
                     <Button style={{ marginRight: 5 }} type="dashed" onClick={() => characterFormChange(record)}>Изменить</Button>
-                    <Button type="dashed" onClick={() => characterDelete(record.id)} >Удалить</Button>
+                    <Button type="dashed" onClick={() => Confirm(characterDelete, record.id)} >Удалить</Button>
                 </span>
             )
         }

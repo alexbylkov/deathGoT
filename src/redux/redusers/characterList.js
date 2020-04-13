@@ -6,11 +6,10 @@ import {
 
 const initialState = {
     loading: false,
-    list: [],
-    error: false
+    list: []
 }
 
-export default function searchReducer(state = initialState, action) {
+const SearchReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case CHARACTERS_REQUEST_LOADING:
 		return {
@@ -25,10 +24,11 @@ export default function searchReducer(state = initialState, action) {
         }
         case CHARACTER_REQUEST_ERROR:
         return {
-            ...state, 
-            error: true
+            loading: false,
+            list: []
         }
 		default:
 		return state
 	}
 }
+export default SearchReducer

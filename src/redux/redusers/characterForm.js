@@ -2,19 +2,16 @@ import {
     CHARACTER_FORM_ADD, 
     CHARACTER_FORM_CHANGE, 
     CHARACTER_FORM_LOADING,
-	CHARACTER_FORM_CLOSE,
-	// CHARACTER_FORM_DELETE
+	CHARACTER_FORM_CLOSE
 } from '../actions/actionTypes'
 
 const initialState = {
 	formVisible: false,
 	item: {},
 	loading: false
-	// formSuccess: false,
-	// loading: false
 }
 
-export default function searchReducer(state = initialState, action) {
+const SearchReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case CHARACTER_FORM_ADD:
 		return {
@@ -38,15 +35,10 @@ export default function searchReducer(state = initialState, action) {
 			loading: false,
 			formVisible: false,
 			item: {}
-
 		}
-		// case CHARACTER_FORM_DELETE:
-		// return {
-		// 	...state, 
-		// 	formVisible: false,
-		// 	item: action.item
-		// }
 		default:
 		return state
 	}
 }
+
+export default SearchReducer

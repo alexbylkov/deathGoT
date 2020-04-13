@@ -13,9 +13,7 @@ const validateField = (touched, errors) => {
     }
 }
 
-const ModalForm = (props) => {
-    const {handleSubmit, touched, errors, handleChange, handleBlur, values, formVisible, formLoading, handleReset, errMas, isValidating} = props
-    console.log(props)
+const ModalForm = ({handleSubmit, touched, errors, handleChange, handleBlur, values, formVisible, formLoading, handleReset}) => {
 
     const action = (values.id ? 'Изменить' : 'Сохранить')
     return (
@@ -36,19 +34,11 @@ const ModalForm = (props) => {
             {action}</Button>
         ]} >
             <Form layout="vertical" >
-
                 <Form.Item 
                 required
                 validateStatus={validateField(touched.character, errors.character)}
                 help={!touched.character ? null : errors.character}
-                // help = { errors.character ? errors.character : "" }
-                // validateStatus = { errors.character ? 'error' : '' }
-                // help={errors.character && touched.character ? errors.character : ''}
-                // validateStatus={errors.character && touched.character ? 'error' : ''}
                 hasFeedback
-                // hasFeedback={!!errors.character}
-                // help={errors.character && touched.character ? errors.character : null}
-                // validateStatus={errors.character && touched.character ? 'error' : ''}
                 label="Имя персонажа">
                     <Input 
                     id="character"
@@ -61,14 +51,7 @@ const ModalForm = (props) => {
                 required
                 validateStatus={validateField(touched.description, errors.description)}
                 help={!touched.description ? null : errors.description}
-                // help = { errors.description ? errors.description : "" }
-                // validateStatus = { errors.description ? 'error' : '' }
-                // help={errors.description && touched.description ? errors.description : ''}
-                // validateStatus={errors.description && touched.description ? 'error' : ''}
-                // hasFeedback
                 hasFeedback
-                // help={errors.description && touched.description ? errors.description : null}
-                // validateStatus={errors.description && touched.description ? 'error' : ''}
                 label="Описание персонажа">
                     <Input.TextArea  
                     id="description"
@@ -116,9 +99,6 @@ const ModalForm = (props) => {
                     value={values.gun}
                     label="Орудие убийства" />
                 </Form.Item>
-                {/* {errors.length && errMas ? <div>Заполните все поля</div> : null}   */}
-                {/* {!values.character && !values.description && !values.death && !values.killer && !values.gun && !errors ? 
-			        <div style={{color: "red"}}>Неверный логин или пароль</div> : null} */}
             </Form>
         </Modal>
     )

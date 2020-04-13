@@ -1,25 +1,46 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {characters} from '../../redux/actions/characterList'
-import {characterDelete, characterFormChange} from '../../redux/actions/characterForm'
-import CharactersTable from '../../components/charactersTable/charactersTable'
+import {characters, characterDelete} from '../../redux/actions/characterList'
+import {characterFormChange} from '../../redux/actions/characterForm'
+import CharactersTable from '../../components/charactersTable'
+import {Input} from 'antd'
+import Spinner from '../../components/UI/spinner'
 
-const CharacterList = ({characters, list, characterDelete, characterFormChange}) => {
+const CharacterList = ({characters, list, characterDelete, characterFormChange, loading}) => {
+    useEffect(() => {characters()},[characters])
+    const [search, setSearch] = useState('')
 
-    useEffect(() => {characters()}, [characters])
-
+    const changeSearch = value => list.filter(({id, ...item}) => {
+        let arr = []
+        const itemKeys = Object.keys(item)
+        let chekItem = false
+        itemKeys.forEach(key => arr.push(item[key].toLowerCase().indexOf(value.toLowerCase())))
+        arr.forEach(arrItem => arrItem > -1 ? chekItem = true : null)
+        return chekItem ? {id, ...item} : null
+    })
+    
     return (
         <>
             <h1>xfnf</h1>
-            {list ? <CharactersTable data={list} characterDelete={characterDelete} characterFormChange={characterFormChange} /> : null}
-
+            <Input.Search
+            placeholder="Введите поисковый запрос"
+            onChange={e => setSearch(e.target.value)}
+            style={{ width: 300 }}
+            />
+            {!list.length && loading ? 
+            <Spinner/> :
+            <CharactersTable 
+            data={changeSearch(search)} 
+            characterDelete={characterDelete} 
+            characterFormChange={characterFormChange} />}
         </>
     )
 }
 
 const mapStateToProps = state => {
 	return {
-		list: state.characterList.list
+        list: state.characterList.list,
+        loading: state.characterList.loading
 	}
 }
 

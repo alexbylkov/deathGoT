@@ -1,14 +1,6 @@
 {
   "characters": [
     {
-      "id": "265594",
-      "character": "осел",
-      "description": "1",
-      "death": "1",
-      "killer": "1",
-      "gun": "1"
-    },
-    {
       "id": "feaec7",
       "character": "осел",
       "description": "h",
@@ -31,6 +23,14 @@
       "death": "kl",
       "killer": "klnkn",
       "gun": "nklnkl"
+    },
+    {
+      "id": "12cb7d",
+      "character": "1",
+      "description": "111",
+      "death": "1",
+      "killer": "2",
+      "gun": "3"
     }
   ]
 }
