@@ -16,7 +16,7 @@ const CharactersTable = ({data, characterDelete, characterFormChange}) => {
             dataIndex: 'description',
             sortDirections: ['descend', 'ascend'],
             sorter: (a, b) =>  b.description.localeCompare(a.description),
-            width: '400px',
+            width: '300px',
             showSorterTooltip: false
         },
         {
@@ -48,10 +48,16 @@ const CharactersTable = ({data, characterDelete, characterFormChange}) => {
                     <Button style={{ marginRight: 5 }} type="dashed" onClick={() => characterFormChange(record)}>Изменить</Button>
                     <Button type="dashed" onClick={() => Confirm(characterDelete, record.id)} >Удалить</Button>
                 </span>
-            )
+            ),
+            width: '250px',
         }
     ]
-    return <Table columns={columns} dataSource={data} rowKey="id" />
+    return <Table 
+    columns={columns} 
+    dataSource={data} 
+    rowKey="id" 
+    size='middle'
+    pagination={{position: ['bottomCenter']}} />
 }
 
 export default CharactersTable

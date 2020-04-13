@@ -4,6 +4,7 @@ import {characters, characterDelete} from '../../redux/actions/characterList'
 import {characterFormChange} from '../../redux/actions/characterForm'
 import CharactersTable from '../../components/charactersTable'
 import {Input} from 'antd'
+import AltMassage from '../../components/UI/altMessage'
 import Spinner from '../../components/UI/spinner'
 
 const CharacterList = ({characters, list, characterDelete, characterFormChange, loading}) => {
@@ -18,22 +19,23 @@ const CharacterList = ({characters, list, characterDelete, characterFormChange, 
         arr.forEach(arrItem => arrItem > -1 ? chekItem = true : null)
         return chekItem ? {id, ...item} : null
     })
-    
+
     return (
+        loading ? 
+        <Spinner/> :
+        list.length ?
         <>
-            <h1>xfnf</h1>
             <Input.Search
             placeholder="Введите поисковый запрос"
             onChange={e => setSearch(e.target.value)}
             style={{ width: 300 }}
             />
-            {!list.length && loading ? 
-            <Spinner/> :
             <CharactersTable 
             data={changeSearch(search)} 
             characterDelete={characterDelete} 
-            characterFormChange={characterFormChange} />}
-        </>
+            characterFormChange={characterFormChange} />
+        </> : 
+        <AltMassage/>
     )
 }
 
