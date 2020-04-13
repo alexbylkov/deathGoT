@@ -23,6 +23,8 @@ const CharacterList = ({characters, list, characterDelete, characterFormChange, 
     return (
         loading ? 
         <Spinner/> :
+        list === null ?
+        null :
         list.length ?
         <>
             <Input.Search

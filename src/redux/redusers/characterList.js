@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     loading: false,
-    list: []
+    list: null
 }
 
 const SearchReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ const SearchReducer = (state = initialState, action) => {
         case CHARACTER_REQUEST_ERROR:
         return {
             loading: false,
-            list: []
+            list: null
         }
 		default:
 		return state
